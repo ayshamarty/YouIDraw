@@ -3,7 +3,9 @@ package tests;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
@@ -29,7 +31,14 @@ public class Tests {
 		driver.get("https://www.youidraw.com/apps/painter/");
 		Actions action = new Actions(driver);
 
-		action.moveByOffset(730, 500).clickAndHold().moveByOffset(50, -100).release().clickAndHold()
+		WebElement checkElement = driver.findElement(By.id("brush"));
+		checkElement.click();
+		checkElement = driver.findElement(By.id("imgBrush"));
+		checkElement.click();
+		checkElement = driver.findElement(By.xpath("//*[@id=\"moreBrush\"]/li[28]/div"));
+		checkElement.click();
+
+		action.moveByOffset(750, 500).clickAndHold().moveByOffset(50, -100).release().clickAndHold()
 				.moveByOffset(50, 100).release().moveByOffset(-80, -40).clickAndHold().moveByOffset(60, 0).release()
 				.perform();
 		action.moveByOffset(30, -60).clickAndHold().moveByOffset(40, 50).release().moveByOffset(30, -50).clickAndHold()
